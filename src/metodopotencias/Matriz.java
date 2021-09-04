@@ -54,13 +54,13 @@ public class Matriz {
 
         double vetor1[];
 
-        System.out.println("-------------------- AutoVetor ------------------|-------- AutoValor -----------");
+        System.out.println("------------------- AutoVetor ------------------ | -------- AutoValor -----------");
         for (int i = 0; i < iterecao; i++) {
 
             vetor1 = Matriz.prodEscalar(matriz, vet);
             vet = Matriz.vetNormalizada(vetor1);
             if (i == iterecao - 1) {
-                System.out.println("\n---------------- AutoVetor Final -----------------|------ AutoValor Final -------");
+                System.out.println("\n--------------- AutoVetor Final ---------------- | ------ AutoValor Final -------");
             }
             Matriz.imprimirVet(vet);
             System.out.print(+autoValor(vetor1) + "\n");

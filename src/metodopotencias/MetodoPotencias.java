@@ -35,7 +35,7 @@ public class MetodoPotencias {
         
         int iteracao = 12;
 
-        Matriz.metodoPotencia(matrizInicial, vet, iteracao);
+       // Matriz.metodoPotencia(matrizInicial, vet, iteracao);
 
         Matriz.metodoPotencia(matrizTesteMat, vetTestMat, iteracao);
     }

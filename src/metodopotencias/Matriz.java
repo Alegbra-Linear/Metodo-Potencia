@@ -26,24 +26,12 @@ public class Matriz {
     }
 
     public static double[] vetNormalizada(double vet[]) {
-        double valor = 0;
-
-        for (int i = 0; i < vet.length; i++) {
-            if (i == 0) {
-                valor = vet[i];
-            } else {
-                if (vet[i] > valor) {
-                    vet[i] = valor;
-                }
-            }
-        }
-
-        System.out.println("Auto valor é: " + valor);
+        double autoValorTemp = autoValor(vet);
 
         double vetNormal[] = new double[vet.length];
 
         for (int i = 0; i < vet.length; i++) {
-            vetNormal[i] = vet[i] / valor;
+            vetNormal[i] = vet[i] / autoValorTemp;
         }
 
         return vetNormal;
@@ -55,7 +43,7 @@ public class Matriz {
             if (i == 0) {
                 System.out.print("( " + vet[i] + ", ");
             } else if (i == vet.length - 1) {
-                System.out.print(vet[i] + " ) = " + "\n");
+                System.out.print(vet[i] + " ) = ");
             } else {
                 System.out.print(vet[i] + ", ");
             }
@@ -66,18 +54,34 @@ public class Matriz {
 
         double vetor1[];
 
+        System.out.println("-------------------- AutoVetor ------------------|-------- AutoValor -----------");
         for (int i = 0; i < iterecao; i++) {
+
             vetor1 = Matriz.prodEscalar(matriz, vet);
-
             vet = Matriz.vetNormalizada(vetor1);
-            Matriz.imprimirVet(vet);
             if (i == iterecao - 1) {
-
-                // fazer uma outra conta aqui...
-                System.out.println("Autovalor é :...");
+                System.out.println("\n---------------- AutoVetor Final -----------------|------ AutoValor Final -------");
             }
+            Matriz.imprimirVet(vet);
+            System.out.print(+autoValor(vetor1) + "\n");
+
         }
 
+    }
+
+    public static double autoValor(double vet[]) {
+        double valor = 0;
+
+        for (int i = 0; i < vet.length; i++) {
+            if (i == 0) {
+                valor = vet[i];
+            } else {
+                if (vet[i] > valor) {
+                    vet[i] = valor;
+                }
+            }
+        }
+        return valor;
     }
 
 }

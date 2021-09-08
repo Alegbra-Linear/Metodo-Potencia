@@ -16,13 +16,15 @@ public class MetodoPotencias {
      */
     public static void main(String[] args) throws Exception {
 
-        double matrizInicial[][] ={ // Matriz para o video 
+        double matriz[][] ={ // Matriz para o video 
+            
             {-4,14,0,-4 ,14,0 },
             {-5,13,0,-5 ,13,0 }, 
             {-1,0 ,2,-1 ,0 ,2 }, 
             {-4,14,0,-4 ,14,0 }, 
             {-5,13,0,-5 ,13,0 }, 
             {-1,0 ,1,-1 ,0 ,1 }
+                
         }; 
         double vet[] = {1,1,1,1,1,1};   // vetor para o video 
        
@@ -35,7 +37,7 @@ public class MetodoPotencias {
         
         int iteracao = 12;
 
-       Matriz.metodoPotencia(matrizInicial, vet, iteracao);
+       Matriz.metodoPotencia(matriz, vet, iteracao);
 
        // Matriz.metodoPotencia(matrizTesteMat, vetTestMat, iteracao);
     }

@@ -28,17 +28,17 @@ public class MetodoPotencias {
         }; 
         double vet[] = {1,1,1,1,1,1};   // vetor para o video 
        
-        double matrizTesteMat[][] = {
-             {-4 ,14,0 }, 
-             {-5 ,13,0 },
+        double matrizTesteMat[][] = {  // matriz teste + explicações
+             {-4 ,14,0 },  // -4 * 1 + 14 * 1 + 0* 1 = 10 
+             {-5 ,13,0 }, 
              {-1 ,0 ,2 }
          };
-        double vetTestMat[] = {1,1,1}; // vetor 
+        double vetTestMat[] = {1,1,1}; // vetor de teste
         
         int iteracao = 12;
 
-       Matriz.metodoPotencia(matriz, vet, iteracao);
+     Matriz.metodoPotencia(matriz, vet, iteracao);
 
-       // Matriz.metodoPotencia(matrizTesteMat, vetTestMat, iteracao);
+    //  Matriz.metodoPotencia(matrizTesteMat, vetTestMat, iteracao);
     }
 }

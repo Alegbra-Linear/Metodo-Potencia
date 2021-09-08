@@ -44,17 +44,17 @@ public class Matriz {
                 vetor[i] += matriz[i][j] * vet[j];
             }
         }
-        return vetor;
+        return vetor; // (10,8,1) --> explicacao video 
 
     }
 
     public static double[] vetNormalizada(double vet[]) {
-        double autoValor = autoValor(vet);
+        double autoValor = autoValor(vet); // 10 --> explicacao video
 
         double autoVetor[] = new double[vet.length];
 
         for (int i = 0; i < vet.length; i++) {
-            autoVetor[i] = vet[i] / autoValor;
+            autoVetor[i] = vet[i] / autoValor; 
         }
 
         return autoVetor;

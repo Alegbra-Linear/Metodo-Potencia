@@ -11,13 +11,36 @@ package metodopotencias;
  */
 public class Matriz {
 
-    public static double[] prodEscalar(double matriz[][], double vet[]) {
+    public static void metodoPotencia(double matriz[][], double vet[], int iterecao) throws Exception {
+
+        // verificação 
+        verificacao(matriz, vet);
+
+        double vetProdEscalar[];
+
+        System.out.println("------------------- AutoVetor ------------------ | -------- AutoValor -----------");
+        for (int i = 0; i < iterecao; i++) {
+
+            vetProdEscalar = Matriz.prodEscalar(matriz, vet);
+            vet = Matriz.vetNormalizada(vetProdEscalar);
+
+            if (i == iterecao - 1) {
+                System.out.println("\n--------------- AutoVetor Final ---------------- | ------ AutoValor Final -------");
+            }
+            Matriz.imprimirVet(vet);
+            System.out.print(autoValor(vetProdEscalar) + "\n");
+
+        }
+
+    }
+
+    public static double[] prodEscalar(double matriz[][], double vet[]) { // faz o produto escalar da matriz e do vetor passados
 
         double vetor[] = new double[vet.length];
 
-        for (int i = 0; i < matriz[0].length; i++) {
+        for (int i = 0; i < matriz.length; i++) {
 
-            for (int j = 0; j < matriz[0].length; j++) {
+            for (int j = 0; j < matriz.length; j++) {
                 vetor[i] += matriz[i][j] * vet[j];
             }
         }
@@ -26,16 +49,31 @@ public class Matriz {
     }
 
     public static double[] vetNormalizada(double vet[]) {
-        double autoValorTemp = autoValor(vet);
+        double autoValor = autoValor(vet);
 
-        double vetNormal[] = new double[vet.length];
+        double autoVetor[] = new double[vet.length];
 
         for (int i = 0; i < vet.length; i++) {
-            vetNormal[i] = vet[i] / autoValorTemp;
+            autoVetor[i] = vet[i] / autoValor;
         }
 
-        return vetNormal;
+        return autoVetor;
 
+    }
+
+    public static double autoValor(double vet[]) { // retorna o maior valor do vetor 
+        double valor = 0;
+
+        for (int i = 0; i < vet.length; i++) {
+            if (i == 0) {
+                valor = vet[i];
+            } else {
+                if (vet[i] > valor) {
+                    valor = vet[i];
+                }
+            }
+        }
+        return valor;
     }
 
     public static void imprimirVet(double vet[]) {
@@ -50,38 +88,60 @@ public class Matriz {
         }
     }
 
-    public static void metodoPotencia(double matriz[][], double vet[], int iterecao) {
+    public static void verificacao(double matriz[][], double vet[]) throws Exception {
 
-        double vetor1[];
-
-        System.out.println("------------------- AutoVetor ------------------ | -------- AutoValor -----------");
-        for (int i = 0; i < iterecao; i++) {
-
-            vetor1 = Matriz.prodEscalar(matriz, vet);
-            vet = Matriz.vetNormalizada(vetor1);
-            if (i == iterecao - 1) {
-                System.out.println("\n--------------- AutoVetor Final ---------------- | ------ AutoValor Final -------");
-            }
-            Matriz.imprimirVet(vet);
-            System.out.print(+autoValor(vetor1) + "\n");
-
+        if (matrizIsNull(matriz) || vetorIsNull(vet)) {
+            throw new Exception("Matriz ou vetor nulos");
+        } else if (matriz.length != vet.length) {
+            throw new Exception("Vetor não é do mesmo tamanho da matriz");
+        }
+        if (!matrizIsSquare(matriz)) {
+            throw new Exception("Matriz não Quadrada");
         }
 
     }
 
-    public static double autoValor(double vet[]) {
-        double valor = 0;
+    public static boolean matrizIsNull(double matriz[][]) { // verifica se a matriz é nula 
 
-        for (int i = 0; i < vet.length; i++) {
-            if (i == 0) {
-                valor = vet[i];
-            } else {
-                if (vet[i] > valor) {
-                    vet[i] = valor;
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if (matriz[i][j] != 0) {
+                    return false;
                 }
             }
+
         }
-        return valor;
+
+        return true;
+
+    }
+
+    public static boolean matrizIsSquare(double matriz[][]) { // verifica se a matriz é quadrada 
+
+        int i = 0;
+        int j = 0;
+
+        for (i = 0; i < matriz.length; i++) {
+            for (j = 0; j < matriz.length; j++) {
+            }
+        }
+
+        if (i != j) {
+            return false;
+
+        }
+        return true;
+    }
+
+    public static boolean vetorIsNull(double vet[]) { // verifica se o vetor é nulo 
+
+        for (int i = 0; i < vet.length; i++) {
+            if (vet[i] != 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }

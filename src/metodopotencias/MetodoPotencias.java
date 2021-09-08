@@ -14,7 +14,7 @@ public class MetodoPotencias {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         double matrizInicial[][] ={ // Matriz para o video 
             {-4,14,0,-4 ,14,0 },
@@ -35,8 +35,8 @@ public class MetodoPotencias {
         
         int iteracao = 12;
 
-       // Matriz.metodoPotencia(matrizInicial, vet, iteracao);
+       Matriz.metodoPotencia(matrizInicial, vet, iteracao);
 
-        Matriz.metodoPotencia(matrizTesteMat, vetTestMat, iteracao);
+       // Matriz.metodoPotencia(matrizTesteMat, vetTestMat, iteracao);
     }
 }
